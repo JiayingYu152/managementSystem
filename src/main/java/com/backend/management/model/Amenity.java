@@ -20,7 +20,7 @@ public class Amenity implements Serializable {
     private int amenity_capacity;
     private String amenity_image;
 
-    private Amenity(){}
+
 
    private Amenity(Builder builder){
 
@@ -31,7 +31,11 @@ public class Amenity implements Serializable {
         this.amenity_image = amenity_image;
    }
 
-   public int getAmenityID(){
+    public Amenity() {
+
+    }
+
+    public int getAmenityID(){
         return amenity_id;
    }
    public String getAmenityName(){

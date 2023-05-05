@@ -15,7 +15,9 @@ import java.util.Date;
 public class Reservation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int reservation_id;
+    @JsonProperty("reservationName")
     private String reservation_name;
     @ManyToOne
     @JoinColumn(name = "amenity_id")
@@ -24,9 +26,12 @@ public class Reservation implements Serializable {
     @JoinColumn(name = "user_id")
     private User requester_id;
 
+   @JsonProperty("guestCount")
     private int guest_count;
     private LocalDate date;
+    @JsonProperty("startTime")
     private int start_time;
+    @JsonProperty("endTime")
     private int end_time;
 
     public Reservation() {}
@@ -51,6 +56,11 @@ public class Reservation implements Serializable {
     public Amenity getAmenityID(){
         return amenity_id;
     }
+//     public User setUser(User username){
+//        this.username = username;
+//        return this;
+//    }
+
     public int getGuestCount(){
         return guest_count;
     }

@@ -18,17 +18,17 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-    @GetMapping(value = "/reservation")
-    public List<Reservation> listByUser(@RequestParam(name = "tenant") String tenantName) {
+    @GetMapping(value = "/reservationfindanewnamebeforereleasing")
+    public List<Reservation> listByTenant(@RequestParam(name = "tenant") String tenantName) {
         User tenant = new User.Builder().setUsername(tenantName).build();
         return reservationService.listByUser(tenant);
     }
 
-//    @GetMapping(value = "/reservation")
-//    public List<Reservation> listByUser(@RequestParam(name = "manager") String managerName) {
-//        User manager = new User.Builder().setUsername(managerName).build();
-//        return reservationService.listByUser(manager);
-//    }
+    @GetMapping(value = "/reservation")
+    public List<Reservation> listByManager(@RequestParam(name = "manager") String managerName) {
+        User manager = new User.Builder().setUsername(managerName).build();
+        return reservationService.listByUser(manager);
+    }
 
     @GetMapping(value = "/reservation/id")
     public Reservation getReservationId(
